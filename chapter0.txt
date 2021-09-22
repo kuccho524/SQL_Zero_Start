@@ -1,0 +1,4 @@
+DBの接続確認方法 ＞ SELECT 1;
+上記を実行して、columnが1で表示されると成功
+
+DBの作成 ＞ CREATE DATABASE データベース名
