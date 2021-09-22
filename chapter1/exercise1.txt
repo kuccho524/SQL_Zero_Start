@@ -1,0 +1,2 @@
+テーブルに列を追加
+ALTER TABLE テーブル名 ADD COLUMN 追加するカラム1, ・・・・・;
