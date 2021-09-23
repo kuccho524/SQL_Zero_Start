@@ -1,0 +1,9 @@
+トランザクション(TRANSACTION)・・・DBに対する1つ以上の更新をまとめて呼ぶとき名称
+
+トランザクションの作成
+開始文・・・BEGIN TRANSACTION;
+
+トランザクション終了文・・・COMMIT; または ROLLBACK;
+
+COMMIT・・・処理を確定する
+ROLLBACK・・・処理を取り消す

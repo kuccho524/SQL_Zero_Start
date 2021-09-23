@@ -1,0 +1,19 @@
+◆データの削除（DROP TABLE文とDELETE文）
+①DROP TABLE文・・・テーブルそのものを削除する
+②DELETE文・・・テーブル（入れ物、容器）は残したまま、テーブル内のすべての行を削除する
+
+・DELETE文
+DELETE FROM テーブル;
+
+削除対象を制限する ⇒ DELETE FORM テーブル WHERE 条件;
+
+※DELETEはGROUP BY、HAVING、ORDER BYの指定ができない
+
+テーブルの全行を削除する ⇒ TRUNCATE テーブル;
+
+
+◆データの更新(UPDATE文)
+UPDATE文・・・データの更新をする
+ex) UPDATE テーブル SET 列名 = 式 (WHERE 条件);
+
+※複数レコードを更新する場合は、カンマで区切る
