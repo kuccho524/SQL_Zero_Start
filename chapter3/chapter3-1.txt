@@ -1,0 +1,24 @@
+関数
+
+・COUNT：テーブルのレコード数（行数）を数える
+ex) 
+SELECT COUNT(*) FROM テーブル; ⇒ テーブルのレコード数を抽出
+SELECT COUNT(カラム1), COUNT(カラム2), ・・・ FROM テーブル; ⇒ 指定したカラムのNULLを除くレコード数を抽出
+
+・SUM：テーブルの数値列のデータを合計する
+ex) SELECT SUM(カラム1), SUM(カラム2),・・・ FROM テーブル;
+
+・AVG：テーブルの数値列のデータを平均する
+ex) SELECT AVG(カラム1), AVG(カラム2), ・・・ FROM テーブル;
+
+・MAX：テーブルの任意の列のデータの最大値を求める
+ex)
+SELECT MAX(カラム1), MAX(カラム2), ・・・ FROM テーブル;
+
+・MIN：テーブルの任意の列データの最小値を求める
+ex)
+SELECT MIN(カラム1), MIN(カラム2), ・・・ FROM テーブル;
+
+※COUNT関数のみNULLを扱う
+※※SUM/AVG関数は数値のみ扱い、MAX/MIN関数はほぼすべてのデータ型を扱う
+※※※重複を避けるDISTINCT句は()の中に記述する

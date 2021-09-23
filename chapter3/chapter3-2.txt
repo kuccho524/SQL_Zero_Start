@@ -1,0 +1,17 @@
+GROUP BY句
+ex)
+SELECT 列名1, 列名2, 列名3, ・・・ FROM テーブル名 (WHERE 条件) GROUP BY 列名1, 列名2, 列名3, ・・・;
+
+※NULLはNULLのグループとして扱われる
+※※GROUP BY句を使うときは、SELECT句に集約キー以外の列名を書けない。
+※※※WHERE句に集約関数を書けない ⇒ SELECT句とHAVING句のみ
+
+
+HAVING句
+ex)
+SELECT 列名1, 列名2, 列名3, ・・・ FROM テーブル名 (WHERE 条件) GROUP BY 列名1, 列名2, 列名3, ・・・ HAVING グループに対する条件;
+
+※HAVING句はGROUP BY句の後ろに書く
+※※HAVING句で書くことができるのは、定数、集約関数、GROUP BYで指定した列名（つまり集約キー）
+※※※WHERE句 = 行に対する条件指定、HAVING句 = グループに対する条件指定。この違いをはっきりさせておく
+上記より、集約キーに対する条件は、WHERE句を使う
