@@ -1,0 +1,15 @@
+１，販売単価が1000円以上、登録日が2009年9月20日、商品名、販売単価、登録日の列を含むビュー「ViewRenshu5_1」を作成
+
+CREATE VIEW ViewRenshu5_1 AS SELECT shohin_mei, hanbai_tanka, torokubi FROM Shohin WHERE hanbai_tanka >= 1000 AND torokubi = '2009-09-20';
+
+
+３，商品全体の平均販売単価を計算した額を表示する
+
+SELECT shohin_id, shohin_mei, shohin_bunrui, hanbai_tanka, (SELECT AVG(hanbai_tanka) AS hanbai_tanka_all FROM Shohin) FROM Shohin;
+
+
+４，商品部類ごとの平均販売単価をもつビューAvgTankaByBunruiを作成する
+CREATE VIEW AvgTankaByBunri AS SELECT shohin_id, shohin_mei, shohin_bunrui, hanbai_tanka, (SELECT AVG(hanbai_tanka) FROM Shohin S2 WHERE S1.shohin_bunri = S2.shohin_bunri GROUP BY S2.shohin_bunri) AS avg_hanbai_tanka FROM Shohin S1;
+
+()の外はShohin S1の範囲
+()内がShohin S2の範囲

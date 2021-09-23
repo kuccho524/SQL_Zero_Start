@@ -1,0 +1,16 @@
+サブクエリ・・・使い捨てのビュー
+
+※サブクエリは内側から実行される
+※※サブクエリをネストして階層数を増やすことはできるが、パフォーマンスに悪影響を与える上、可読性が低下するため避けた方が良い。
+※※※スカラ・サブクエリを使う際、絶対にサブクエリが複数行を返さないようにする。⇒ サブクエリを返す時点で、ただのサブクエリになるから
+
+
+相関サブクエリとは、相関サブクエリとは、WHERE句に外部クエリからの値を使用するサブクエリ。
+⇒小分けにしたグループ内での比較をするときに使う
+
+※結合条件は必ずサブクエリの中に書く
+
+ex)
+SELECT shohin_bunrui, shohin_mei, hanbai_tanka FROM Shohin AS S1 WHERE hanbai_tanka > (SELECT AVG(hanbai_tanka) FROM Shohin AS S2 WHERE S1.shohin_bunrui = S2.shohin_bunrui GROUP BY shohin_bunrui);
+
+上記のSQL文の場合、S1の生存範囲はSQL文全体であるの対し、S2の生存範囲は後半の()のサブクエリの部分のみ
