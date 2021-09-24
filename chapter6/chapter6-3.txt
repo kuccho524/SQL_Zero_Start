@@ -1,0 +1,6 @@
+CASE式・・・場合分けを記述する時に使用する。
+ex)
+CASE WHEN 評価式 THEN 式 ・・・ ELSE 式 END ～ FROM テーブル;
+
+※CASE式のELSE句は省略可能だが、省略しないこと
+※※ENDは省略不可
