@@ -1,0 +1,6 @@
+・登録日を昇順に並べた場合の、各日付時点の販売単価の合計金額を求める。
+・登録日がNULLのレコードが最初に表示される
+
+上記を満たすSQL文
+SELECT torokubi, shohin_mei, hanbai_tanka, SUM(hanbai_tanka) OVER (ORDER BY torokubi NULLS FIRST) AS 
+current_sum_tanka FROM Shohin;

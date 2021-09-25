@@ -1,0 +1,22 @@
+◆GROUPING演算子
+
+ROLLUP・・・集約キーの組み合わせが異なる結果を一度に計算する
+基本構文) GROUP BY ROLLUP(列1, 列2, ・・・);
+ex)
+SELECT shohin_bunrui, torokubi, SUM(hanbai_tanka) AS sum_tanka FROM Shohin GROUP BY ROLLUP (shohin_bunrui, torokubi);
+
+
+CUBE・・・集約キーで切り分けたブロックを積み上げて立方体を作る
+基本構文) GROUP BY CUBE(列1, 列2, ・・・);
+ex)
+SELECT CASE WHEN GROUPING(shohin_bunrui) = 1 THEN '商品分類 合計' ELSE shohin_bunrui END AS shohin_bunrui, 
+CASE WHEN GROUPING(torokubi) = 1 THEN '登録日 合計' ELSE CAST(torokubi AS VARCHAR(16)) END as torokubi, 
+SUM(hanbai_tanka) AS sum_tanka FROM Shohin GROUP BY CUBE(shohin_bunrui, torokubi);
+
+
+GROUPING SETS・・・ROLLUPやCUBEで求めた結果の一部レコードだけを求める
+基本構文)GROUP BY GROUPING SETS(列1, 列2, ・・・);
+ex)
+SELECT CASE WHEN GROUPING(shohin_bunrui) = 1 THEN '商品分類 合計' ELSE shohin_bunrui END AS shohin_bunrui, 
+CASE WHEN GROUPING(torokubi) = 1 THEN '登録日 合計' ELSE CAST(torokubi AS VARCHAR(16)) END as torokubi, 
+SUM(hanbai_tanka) AS sum_tanka FROM Shohin GROUP BY GROUPING SETS(shohin_bunrui, torokubi);
