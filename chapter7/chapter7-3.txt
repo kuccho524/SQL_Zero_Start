@@ -1,0 +1,15 @@
+３つのテーブルを結合する
+ex)
+SELECT TS.tenpo_id, TS.tenpo_mei, TS.shohin_id, S.shohin_mei, S.hanbai_tanka, ZS.zaiko_suryo 
+FROM TenpoShohin AS TS INNER JOIN Shohin AS S ON TS.shohin_id = S.shohin_id 
+INNER JOIN ZaikoShohin AS ZS ON TS.shohin_id = ZS.shohin_id WHERE ZS.souko_id = 'S001';
+
+
+上記のようにFROM句に再度INNER JOINしている。ON句で結合条件を指定するところは変わらない
+
+
+◆CROSS JOIN・・・２つのテーブルのレコードについてすべての組み合わせを作る結合
+ex)
+SELECT TS.tenpo_id, TS.tenpo_mei, TS.shohin_id, S.shohin_mei FROM TenpoShohin AS TS CROSS JOIN Shohin AS S;
+
+※CROSS JOINを使うときは、ON句を利用できない

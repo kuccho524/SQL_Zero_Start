@@ -1,0 +1,17 @@
+◆集合演算子
+・UNION・・・レコードの足し算を行う
+ex) SELECT カラム FROM テーブル1 UNION SELECT カラム FROM テーブル2;
+
+UNIONの後ろにALLを付けると重複を残す
+
+※レコードの列数は同じにすること
+※※対象となるレコード列のデータ型が一致していること
+※※※ORDER BY句は最後につける
+
+
+・INTERSECT・・・２つのレコードの共通部分を選択する
+ex) SELECT カラム FROM テーブル1 INTERSECT SELECT カラム FROM テーブル2;
+
+
+・EXCEPT・・・レコードの引き算をする
+ex) SELECT カラム FROM テーブル1 EXCEPT SELECT カラム FROM テーブル2;
