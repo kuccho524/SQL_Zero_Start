@@ -1,0 +1,5 @@
+◆JavaからPostgreSQLに接続
+
+Connection・・・DBとの接続を担当する
+Statement・・・実行したいSQL文の格納と実行を担当する
+ResultSet・・・SQL文の実行結果を格納する
