@@ -1,0 +1,6 @@
+販売単価がを10%引きにしても利益が100円より高いキッチン用品と事務用品を表示する。
+
+上記の計算式は、hanbai_tanka * 0.9 - 100 > shiire_tanka
+
+SELECT shohin_mei, shohin_bunrui, hanbai_tanka * 0.9 - shiire_tanka AS rieki FROM Shohin 
+WHERE hanbai_tanka * 0.9 - 100 > shiire_tanka AND (shohin_bunrui = '事務用品' OR shohin_bunrui = 'キッチン用品');

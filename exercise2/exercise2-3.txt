@@ -1,0 +1,7 @@
+販売単価が仕入単価より500円以上高いレコードを表示する
+
+SELECT shohin_mei, hanbai_tanka, shiire_tanka FROM Shohin WHERE hanbai_tanka - shiire_tanka >= 500;
+
+下記２通りに書き換え可能
+SELECT shohin_mei, hanbai_tanka, shiire_tanka FROM Shohin WHERE hanbai_tanka >= shiire_tanka + 500;
+SELECT shohin_mei, hanbai_tanka, shiire_tanka FROM Shohin WHERE hanbai_tanka - 500 >= shiire_tanka;
