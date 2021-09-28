@@ -1,0 +1,2 @@
+販売単価の10%引きして仕入単価を引いた値をriekiとして表示する
+SELECT *, hanbai_tanka * 0.9 - shiire_tanka AS rieki FROM Shohin;
