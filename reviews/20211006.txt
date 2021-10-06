@@ -1,0 +1,48 @@
+--Shohinテーブルからレコードをコピーしてs_saekiテーブルに挿入する
+
+INSERT INTO s_saeki (shohin_id, shohin_mei, hanbai_tanka, shiire_tanka, saeki) 
+SELECT shohin_id, shohin_mei, hanbai_tanka, shiire_tanka, hanbai_tanka - shiire_tanka FROM Shohin;
+
+
+--他のテーブルからコピーするときはINSERT INTO テーブル VALUESではなく、INSERT INTO テーブル　()で続ける
+
+
+/*
+Shohinテーブルからshohin_id, shohin_mei, shohin_bunrui, hanbai_tankaをさせ、
+商品全体を取り出した値をhanbai_tanka_allとして抽出したShohinテーブルを表示させる
+*/
+
+SELECT shohin_id, shohin_mei, shohin_bunrui, hanbai_tanka, (SELECT AVG(hanbai_tanka) FROM Shohin) 
+AS hanbai_tanka_all FROM Shohin GROUP BY shohin_id;
+
+/*
+SELECT文に(SELECT AVG(hanbai_tanka) FROM Shohin) AS hanbai_tanka_allと記述することで、商品全体の販売単価平均金額を計算し、
+商品全体の販売単価平均をhanbai_tanka_allとすることができる
+
+(SELECT AVG(hanbai_tanka) FROM Shohin)はSELECTでShohinテーブル全体を抽出し、
+AVG関数にhanbai_tankaを引数に設定することで全体の販売単価平均を計算する
+*/
+
+--スカラ・サブクエリは単一行しか返せない
+
+
+/*
+Shohinテーブルからshohin_id, shohin_mei, shohin_bunrui, hanbai_tankaをさせ、
+商品分類ごとの販売単価平均をavg_hanbai_tankaとして抽出したShohinテーブルを表示させる
+*/
+
+SELECT shohin_id, shohin_mei, shohin_bunrui, hanbai_tanka, (SELECT AVG(hanbai_tanka) FROM Shohin AS S2 
+WHERE S2.shohin_bunrui = S1.shohin_bunrui) AS avg_hanbai_tanka FROM Shohin AS S1;
+
+/*
+SELECT文に(SELECT AVG(hanbai_tanka) FROM Shohin AS S2 WHERE S2.shohin_bunrui = S1.shohin_bunrui) AS avg_hanbai_tankaを
+記述することで、商品分類ごとの販売単価平均を求められる。
+
+(SELECT AVG(hanbai_tanka) FROM Shohin AS S2 WHERE S2.shohin_bunrui = S1.shohin_bunrui)
+
+SELECT AVG(hanbai_tanka) FROM Shohin AS S2は、AVG関数で求めた値のテーブルをS2とし、
+WHERE S2.shohin_bunrui = S1.shohin_bunruiとすることで、元のテーブルとサブクエリのテーブルを結合する。
+最後に、FROM Shohin AS S1とすることで、元のテーブルをS1として扱う。
+
+上記のSQL文はテーブルの結合が行われており、相関サブクエリを利用している
+*/
