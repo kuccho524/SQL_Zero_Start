@@ -1,0 +1,9 @@
+SELECT shohin_bunrui, SUM(hanbai_tanka), SUM(shiire_tanka) FROM Shohin GROUP BY shohin_bunrui 
+HAVING SUM(hanbai_tanka) > SUM(shiire_tanka) * 1.5 AND (shohin_bunrui = '衣服' OR shohin_bunrui = '事務用品');
+
+
+/*
+shohin_bunruiごとにテーブルから抽出するため、GROUP BYで対象のカラムを指定する。
+また、WHERE句に集約関数を指定できないため、HAVING句を使用しグループに対して対して条件を指定し、
+対象条件の集約関数を使用する。
+*/
